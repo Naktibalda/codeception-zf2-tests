@@ -20,33 +20,13 @@ return array(
                     ),
                 ),
             ),
-            // The following is a route to simplify getting started creating
-            // new controllers and actions without needing to create a new
-            // module. Simply drop new controllers in, and you can access them
-            // using the path /application/:controller/:action
-            'application' => array(
-                'type'    => 'Literal',
+            'rest' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/application',
+                    'route'    => '/rest',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller'    => 'Index',
-                        'action'        => 'index',
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '/[:controller[/:action]]',
-                            'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                            ),
-                        ),
+                        'controller' => 'Application\Controller\Rest',
+                        'action'     => 'index',
                     ),
                 ),
             ),
@@ -54,8 +34,6 @@ return array(
     ),
     'service_manager' => array(
         'abstract_factories' => array(
-            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
-            'Zend\Log\LoggerAbstractServiceFactory',
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
@@ -73,7 +51,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Rest' => 'Application\Controller\RestController'
         ),
     ),
     'view_manager' => array(
@@ -90,6 +69,9 @@ return array(
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
+        ),
+        'strategies' => array(
+            'ViewJsonStrategy',
         ),
     ),
     // Placeholder for console routes
