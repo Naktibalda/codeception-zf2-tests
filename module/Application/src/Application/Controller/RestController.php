@@ -18,14 +18,22 @@ class RestController extends AbstractActionController
     public function indexAction()
     {
         $request = $this->getServiceLocator()->get('Request');
-    
+        
+        $tokenHeader = $request->getHeaders()->get('X-Auth-Token');
+        if ($tokenHeader) {
+            $tokenHeaderValue = $tokenHeader->getFieldValue();
+        } else {
+            $tokenHeaderValue = null;
+        }
+
         $data = array(
             'requestMethod' => $request->getMethod(),
             'requestUri' => $request->getRequestUri(),
             'queryParams' => $request->getQuery(),
             'formParams' => $request->getPost(),
             'rawBody' => $request->getContent(),
-            'headers' => $request->getHeaders(),
+            'headers' => $request->getHeaders()->toArray(),
+            'X-Auth-Token' => $tokenHeaderValue,
         );
         return new JsonModel($data);
     }
