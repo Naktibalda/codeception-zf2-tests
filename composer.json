@@ -1,7 +1,10 @@
 {
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "~2.4",
+        "zendframework/zendframework": "~2.4"
+    },
+    "require-dev": {
         "codeception/codeception": "^2.0"
     }
+    
 }
