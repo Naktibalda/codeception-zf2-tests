@@ -6,4 +6,8 @@
 
 class_name: FunctionalTester
 modules:
-    enabled: [Filesystem, FunctionalHelper, ZF2, REST]
+  enabled: 
+    - FunctionalHelper
+    - ZF2
+    - REST:
+        depends: ZF2
