@@ -7,6 +7,8 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
+
+
 return array(
     'router' => array(
         'routes' => array(
@@ -27,6 +29,26 @@ return array(
                     'defaults' => array(
                         'controller' => 'Application\Controller\Rest',
                         'action'     => 'index',
+                    ),
+                ),
+            ),
+            'posts.create' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/posts-create',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Posts',
+                        'action'     => 'create',
+                    ),
+                ),
+            ),
+            'posts.show' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route'    => '/posts/:id',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Posts',
+                        'action'     => 'show',
                     ),
                 ),
             ),
@@ -52,7 +74,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
-            'Application\Controller\Rest' => 'Application\Controller\RestController'
+            'Application\Controller\Rest' => 'Application\Controller\RestController',
+            'Application\Controller\Posts' => 'Application\Controller\PostsController',
         ),
     ),
     'view_manager' => array(
