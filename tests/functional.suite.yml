@@ -8,6 +8,7 @@ class_name: FunctionalTester
 modules:
   enabled: 
     - FunctionalHelper
+    - Asserts
     - ZF2
     - REST:
         depends: ZF2

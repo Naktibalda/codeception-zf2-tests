@@ -52,6 +52,49 @@ return array(
                     ),
                 ),
             ),
+            'example.index' => array(
+                'type' => 'Zend\Mvc\Router\Http\Hostname',
+                'options' => array(
+                    'route'    => 'example.com',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\ExampleDomain',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'example.subdomain' => array(
+                'type' => 'Zend\Mvc\Router\Http\Hostname',
+                'options' => array(
+                    'route'    => ':subdomain.example.com',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\ExampleDomain',
+                        'action'     => 'subdomain',
+                    ),
+                ),
+            ),
+            'child.route' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/posts-create',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Posts',
+                        'action'     => 'create',
+                    ),
+                ),
+                'may_terminate' => false,
+                'child_routes' => array(
+                    'posts.create.example2' =>  array(
+                        'type' => 'Zend\Mvc\Router\Http\Hostname',
+                        'options' => array(
+                            'route'    => 'example2.com',
+                            'defaults' => array(
+                                'controller' => 'Application\Controller\ExampleDomain',
+                                'action'     => 'createPost',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -76,6 +119,7 @@ return array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Rest' => 'Application\Controller\RestController',
             'Application\Controller\Posts' => 'Application\Controller\PostsController',
+            'Application\Controller\ExampleDomain' => 'Application\Controller\ExampleDomainController',
         ),
     ),
     'view_manager' => array(
