@@ -95,6 +95,27 @@ return array(
                     ),
                 ),
             ),
+
+            'form.index' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/form',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Form',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'form.post' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/form/post',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Form',
+                        'action'     => 'post',
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -119,6 +140,7 @@ return array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Rest' => 'Application\Controller\RestController',
             'Application\Controller\Posts' => 'Application\Controller\PostsController',
+            'Application\Controller\Form' => 'Application\Controller\FormController',
             'Application\Controller\ExampleDomain' => 'Application\Controller\ExampleDomainController',
         ),
     ),
