@@ -1,6 +1,7 @@
 {
     "require": {
-        "zendframework/zendframework": "~2.4"
+        "zendframework/zendframework": "~2.4",
+        "zendframework/zend-mvc": "~2.4 <2.7"
     },
     "require-dev": {
         "codeception/codeception": "2.1.*"
