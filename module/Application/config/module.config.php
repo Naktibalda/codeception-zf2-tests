@@ -1,13 +1,6 @@
 <?php
-/**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
-
+namespace Application;
 
 return array(
     'router' => array(
@@ -116,6 +109,26 @@ return array(
                     ),
                 ),
             ),
+            'doctrine.index' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/doctrine/',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Doctrine',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'doctrine.create-user' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/doctrine/create-user',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Doctrine',
+                        'action'     => 'createUser',
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -142,6 +155,7 @@ return array(
             'Application\Controller\Posts' => 'Application\Controller\PostsController',
             'Application\Controller\Form' => 'Application\Controller\FormController',
             'Application\Controller\ExampleDomain' => 'Application\Controller\ExampleDomainController',
+            'Application\Controller\Doctrine' => 'Application\Controller\DoctrineController',
         ),
     ),
     'view_manager' => array(
@@ -169,5 +183,20 @@ return array(
             'routes' => array(
             ),
         ),
+    ),
+
+    'doctrine' => array(
+        'driver' => array(
+            __NAMESPACE__ . '_driver' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity')
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                )
+            )
+        )
     ),
 );
