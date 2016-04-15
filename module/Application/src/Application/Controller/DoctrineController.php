@@ -16,10 +16,13 @@ use Zend\View\Model\ViewModel;
 class DoctrineController extends AbstractActionController
 {
     /**
-     * @var DoctrineORMEntityManager
+     * @var EntityManager
      */
     protected $em;
 
+    /**
+     * @return EntityManager
+     */
     public function getEntityManager()
     {
         if (null === $this->em) {
@@ -30,16 +33,21 @@ class DoctrineController extends AbstractActionController
 
     public function indexAction()
     {
-        return new ViewModel();
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery('SELECT COUNT(u) FROM Application\Entity\User u');
+        $count = $query->getSingleScalarResult();
+
+        return new ViewModel([
+            'count' => $count,
+        ]);
     }
 
     public function createUserAction()
     {
         $name = $this->params()->fromPost('name');
 
-        $entityManager = $this
-            ->getServiceLocator()
-            ->get('Doctrine\ORM\EntityManager');
+        $entityManager = $this->getEntityManager();
 
         $user = new \Application\Entity\User();
         $user->name = $name;
