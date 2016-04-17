@@ -129,6 +129,16 @@ return array(
                     ),
                 ),
             ),
+            'redirect' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/redirect',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Redirect',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -156,6 +166,7 @@ return array(
             'Application\Controller\Form' => 'Application\Controller\FormController',
             'Application\Controller\ExampleDomain' => 'Application\Controller\ExampleDomainController',
             'Application\Controller\Doctrine' => 'Application\Controller\DoctrineController',
+            'Application\Controller\Redirect' => 'Application\Controller\RedirectController',
         ),
     ),
     'view_manager' => array(
