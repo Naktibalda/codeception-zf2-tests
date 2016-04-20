@@ -9,5 +9,5 @@ return array(
                     'port'     => '',
                     'user'     => 'root',
                     'password' => '',
-                    'dbname'   => 'codeception_test',
+                    'dbname'   => 'zf2_test',
                 )))));
