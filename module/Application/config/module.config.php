@@ -175,7 +175,6 @@ return array(
             'Application\Controller\Posts' => 'Application\Controller\PostsController',
             'Application\Controller\Form' => 'Application\Controller\FormController',
             'Application\Controller\ExampleDomain' => 'Application\Controller\ExampleDomainController',
-            'Application\Controller\Doctrine' => 'Application\Controller\DoctrineController',
             'Application\Controller\Redirect' => 'Application\Controller\RedirectController',
         ),
     ),

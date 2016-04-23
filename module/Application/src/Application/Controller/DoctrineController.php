@@ -20,22 +20,16 @@ class DoctrineController extends AbstractActionController
      */
     protected $em;
 
-    /**
-     * @return EntityManager
-     */
-    public function getEntityManager()
+    public function __construct(EntityManager $entityManager)
     {
-        if (null === $this->em) {
-            $this->em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
-        }
-        return $this->em;
+        $this->em = $entityManager;
     }
+
 
     public function indexAction()
     {
-        $entityManager = $this->getEntityManager();
 
-        $query = $entityManager->createQuery('SELECT COUNT(u) FROM Application\Entity\User u');
+        $query = $this->em->createQuery('SELECT COUNT(u) FROM Application\Entity\User u');
         $count = $query->getSingleScalarResult();
 
         return new ViewModel([
@@ -47,13 +41,11 @@ class DoctrineController extends AbstractActionController
     {
         $name = $this->params()->fromPost('name');
 
-        $entityManager = $this->getEntityManager();
-
         $user = new \Application\Entity\User();
         $user->name = $name;
 
-        $entityManager->persist($user);
-        $entityManager->flush();
+        $this->em->persist($user);
+        $this->em->flush();
 
         return new ViewModel();
     }
