@@ -18,4 +18,9 @@ class RedirectController extends AbstractActionController
     {
         return $this->redirect()->toRoute('doctrine.index');
     }
+
+    public function twoAction()
+    {
+        return $this->redirect()->toRoute('redirect.index');
+    }
 }

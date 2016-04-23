@@ -129,13 +129,23 @@ return array(
                     ),
                 ),
             ),
-            'redirect' => array(
+            'redirect.index' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
                     'route'    => '/redirect',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Redirect',
                         'action'     => 'index',
+                    ),
+                ),
+            ),
+            'redirect.two' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/redirect2',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Redirect',
+                        'action'     => 'two',
                     ),
                 ),
             ),
