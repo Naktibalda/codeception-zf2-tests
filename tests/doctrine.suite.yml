@@ -1,0 +1,8 @@
+class_name: DoctrineTester
+modules:
+    enabled:
+        - \Helper\Doctrine
+        - ZF2
+        - Doctrine2:
+            depends:
+              ZF2

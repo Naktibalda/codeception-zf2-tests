@@ -36,4 +36,17 @@ class Module
             ),
         );
     }
+
+    public function getControllerConfig()
+    {
+        return array(
+            'factories' => array(
+                'Application\Controller\Doctrine' => function ($controllerManager) {
+                    $serviceManager = $controllerManager->getServiceLocator();
+                    $entityManager = $serviceManager->get('doctrine.entitymanager.orm_default');
+                    return new \Application\Controller\DoctrineController($entityManager);
+                },
+            ),
+        );
+    }
 }

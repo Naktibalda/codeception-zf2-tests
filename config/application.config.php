@@ -1,0 +1,1 @@
+../tests/application.config.php

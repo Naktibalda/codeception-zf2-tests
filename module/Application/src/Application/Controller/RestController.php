@@ -17,8 +17,8 @@ class RestController extends AbstractActionController
 {
     public function indexAction()
     {
-        $request = $this->getServiceLocator()->get('Request');
-        
+        $request = $this->getRequest();
+
         $tokenHeader = $request->getHeaders()->get('X-Auth-Token');
         if ($tokenHeader) {
             $tokenHeaderValue = $tokenHeader->getFieldValue();
