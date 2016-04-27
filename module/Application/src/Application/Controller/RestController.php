@@ -17,6 +17,9 @@ class RestController extends AbstractActionController
 {
     public function indexAction()
     {
+        /**
+         * @var \Zend\Http\PhpEnvironment\Request
+         */
         $request = $this->getRequest();
 
         $tokenHeader = $request->getHeaders()->get('X-Auth-Token');
@@ -26,7 +29,7 @@ class RestController extends AbstractActionController
             $tokenHeaderValue = null;
         }
 
-        $data = array(
+        $data = [
             'requestMethod' => $request->getMethod(),
             'requestUri' => $request->getRequestUri(),
             'queryParams' => $request->getQuery(),
@@ -34,7 +37,8 @@ class RestController extends AbstractActionController
             'rawBody' => $request->getContent(),
             'headers' => $request->getHeaders()->toArray(),
             'X-Auth-Token' => $tokenHeaderValue,
-        );
+            'files' => $request->getFiles(),
+        ];
         return new JsonModel($data);
     }
 }
