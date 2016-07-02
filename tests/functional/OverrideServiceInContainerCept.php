@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @group services
+ */
+
 $I = new FunctionalTester($scenario);
 $I->wantTo('override existing service');
 

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @group services
+ */
+
 $I = new FunctionalTester($scenario);
 $I->wantTo('see that added service persists between requests');
 
