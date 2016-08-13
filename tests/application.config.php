@@ -1,11 +1,19 @@
 <?php
+$modules = [
+    'Application',
+//    'DoctrineModule',
+//    'DoctrineORMModule',
+];
+
+if (interface_exists('\Zend\Router\RouteInterface')) {
+    $modules []= 'Zend\Router';
+    $modules []= 'Zend\I18n';
+    $modules []= 'Zend\Mvc\I18n';
+}
+
 return array(
     // This should be an array of module namespaces used in the application.
-    'modules' => array(
-        'Application',
-        'DoctrineModule',
-        'DoctrineORMModule',
-    ),
+    'modules' => $modules,
 
     // These are various options for the listeners attached to the ModuleManager
     'module_listener_options' => array(
