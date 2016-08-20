@@ -17,7 +17,8 @@ class DoctrineControllerFactory implements FactoryInterface
 
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $entityManager = $serviceLocator->get('doctrine.entitymanager.orm_default');
+        $parentLocator = $serviceLocator->getServiceLocator();
+        $entityManager = $parentLocator->get('doctrine.entitymanager.orm_default');
         return new DoctrineController($entityManager);
     }
 }
