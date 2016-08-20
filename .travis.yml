@@ -1,0 +1,21 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7.0
+  - hhvm
+
+matrix:
+  allow_failures:
+    - php: hhvm
+
+before_script:
+  - composer self-update
+  - '[[ "$TRAVIS_PHP_VERSION" == "5.5" ]] || composer install -n'
+  - '[[ "$TRAVIS_PHP_VERSION" != "5.5" ]] || composer update -n --prefer-lowest'
+  - ./vendor/bin/codecept build
+
+script:
+  - ./vendor/bin/codecept run
