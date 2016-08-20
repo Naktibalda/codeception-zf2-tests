@@ -175,6 +175,9 @@ return array(
         ),
     ),
     'controllers' => array(
+        'factories' => array(
+            'Application\Controller\Doctrine' => 'Application\Controller\DoctrineControllerFactory',
+        ),
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Rest' => 'Application\Controller\RestController',
