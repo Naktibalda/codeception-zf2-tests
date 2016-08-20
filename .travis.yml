@@ -15,7 +15,10 @@ before_script:
   - composer self-update
   - '[[ "$TRAVIS_PHP_VERSION" == "5.5" ]] || composer install -n'
   - '[[ "$TRAVIS_PHP_VERSION" != "5.5" ]] || composer update -n --prefer-lowest'
+  - "mysql -e 'create database zf2_test;'"
+  - ./vendor/bin/doctrine-module orm:schema-tool:create
+
   - ./vendor/bin/codecept build
 
 script:
-  - ./vendor/bin/codecept run
+  - ./vendor/bin/codecept run functional,doctrine
