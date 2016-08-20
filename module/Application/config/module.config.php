@@ -2,11 +2,17 @@
 
 namespace Application;
 
+if (interface_exists('\Zend\Router\RouteInterface')) {
+    $routerPrefix = '\Zend\Router\\';
+} else {
+    $routerPrefix = '\Zend\Mvc\Router\\';
+}
+
 return array(
     'router' => array(
         'routes' => array(
             'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => $routerPrefix . 'Http\Literal',
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
@@ -16,7 +22,7 @@ return array(
                 ),
             ),
             'rest' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => $routerPrefix . 'Http\Literal',
                 'options' => array(
                     'route'    => '/rest',
                     'defaults' => array(
@@ -26,7 +32,7 @@ return array(
                 ),
             ),
             'posts.create' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => $routerPrefix . 'Http\Literal',
                 'options' => array(
                     'route'    => '/posts-create',
                     'defaults' => array(
@@ -36,7 +42,7 @@ return array(
                 ),
             ),
             'posts.show' => array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'type' => $routerPrefix . 'Http\Segment',
                 'options' => array(
                     'route'    => '/posts/:id',
                     'defaults' => array(
@@ -46,7 +52,7 @@ return array(
                 ),
             ),
             'example.index' => array(
-                'type' => 'Zend\Mvc\Router\Http\Hostname',
+                'type' => $routerPrefix . 'Http\Hostname',
                 'options' => array(
                     'route'    => 'example.com',
                     'defaults' => array(
@@ -56,7 +62,7 @@ return array(
                 ),
             ),
             'example.subdomain' => array(
-                'type' => 'Zend\Mvc\Router\Http\Hostname',
+                'type' => $routerPrefix . 'Http\Hostname',
                 'options' => array(
                     'route'    => ':subdomain.example.com',
                     'defaults' => array(
@@ -66,7 +72,7 @@ return array(
                 ),
             ),
             'child.route' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => $routerPrefix . 'Http\Literal',
                 'options' => array(
                     'route'    => '/posts-create',
                     'defaults' => array(
@@ -77,7 +83,7 @@ return array(
                 'may_terminate' => false,
                 'child_routes' => array(
                     'posts.create.example2' =>  array(
-                        'type' => 'Zend\Mvc\Router\Http\Hostname',
+                        'type' => $routerPrefix . 'Http\Hostname',
                         'options' => array(
                             'route'    => 'example2.com',
                             'defaults' => array(
@@ -90,7 +96,7 @@ return array(
             ),
 
             'form.index' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => $routerPrefix . 'Http\Literal',
                 'options' => array(
                     'route'    => '/form',
                     'defaults' => array(
@@ -100,7 +106,7 @@ return array(
                 ),
             ),
             'form.post' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => $routerPrefix . 'Http\Literal',
                 'options' => array(
                     'route'    => '/form/post',
                     'defaults' => array(
@@ -110,7 +116,7 @@ return array(
                 ),
             ),
             'doctrine.index' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => $routerPrefix . 'Http\Literal',
                 'options' => array(
                     'route'    => '/doctrine/',
                     'defaults' => array(
@@ -120,7 +126,7 @@ return array(
                 ),
             ),
             'doctrine.create-user' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => $routerPrefix . 'Http\Literal',
                 'options' => array(
                     'route'    => '/doctrine/create-user',
                     'defaults' => array(
@@ -130,7 +136,7 @@ return array(
                 ),
             ),
             'redirect.index' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => $routerPrefix . 'Http\Literal',
                 'options' => array(
                     'route'    => '/redirect',
                     'defaults' => array(
@@ -140,7 +146,7 @@ return array(
                 ),
             ),
             'redirect.two' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => $routerPrefix . 'Http\Literal',
                 'options' => array(
                     'route'    => '/redirect2',
                     'defaults' => array(
@@ -169,6 +175,9 @@ return array(
         ),
     ),
     'controllers' => array(
+        'factories' => array(
+            'Application\Controller\Doctrine' => 'Application\Controller\DoctrineControllerFactory',
+        ),
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Rest' => 'Application\Controller\RestController',
