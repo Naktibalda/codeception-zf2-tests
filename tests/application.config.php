@@ -1,8 +1,8 @@
 <?php
 $modules = [
     'Application',
-//    'DoctrineModule',
-//    'DoctrineORMModule',
+    'DoctrineModule',
+    'DoctrineORMModule',
 ];
 
 if (interface_exists('\Zend\Router\RouteInterface')) {
