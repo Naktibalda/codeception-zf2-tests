@@ -21,4 +21,5 @@ before_script:
   - ./vendor/bin/codecept build
 
 script:
-  - ./vendor/bin/codecept run functional,doctrine
+  - '[[ "$TRAVIS_PHP_VERSION" > "5.5" ]] || ./vendor/bin/codecept run functional,doctrine -v'
+  - '[[ "$TRAVIS_PHP_VERSION" < "5.6" ]] || ./vendor/bin/codecept run functional -v'
