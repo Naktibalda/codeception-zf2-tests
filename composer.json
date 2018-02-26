@@ -1,6 +1,7 @@
 {
     "require": {
         "zendframework/zendframework": "~2.4 || ~3.0",
+        "davert/replace-zend-test": "*",
         "doctrine/doctrine-orm-module": ">0.5.1",
         "doctrine/orm": ">2.4.4"
     },
