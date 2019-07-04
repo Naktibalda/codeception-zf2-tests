@@ -6,7 +6,7 @@
 
 $I = new FunctionalTester($scenario);
 $I->wantTo('see that added service persists between requests');
-if (!method_exists('Zend\ServiceManager\ServiceLocatorInterface', 'addPeeringServiceManager')) {
+if (!method_exists('Zend\ServiceManager\ServiceManager', 'addPeeringServiceManager')) {
     $scenario->skip('This test is incompatible with ZF3');
 }
 

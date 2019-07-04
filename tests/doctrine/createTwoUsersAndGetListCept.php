@@ -1,7 +1,7 @@
 <?php 
 $I = new DoctrineTester($scenario);
 $I->wantTo('check that the entities persist across multiple steps');
-if (!method_exists('Zend\ServiceManager\ServiceLocatorInterface', 'addPeeringServiceManager')) {
+if (!method_exists('Zend\ServiceManager\ServiceManager', 'addPeeringServiceManager')) {
     $scenario->skip('This test is incompatible with ZF3');
 }
 
