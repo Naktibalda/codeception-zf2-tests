@@ -1,4 +1,10 @@
 {
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/svycka/Codeception"
+        }
+    ],
     "require": {
         "zendframework/zendframework": "~2.4 || ~3.0",
         "davert/replace-zend-test": "*",
@@ -6,7 +12,7 @@
         "doctrine/orm": ">2.4.4"
     },
     "require-dev": {
-        "codeception/codeception": "~2.2.4"
+        "codeception/codeception": "dev-add-ZF3-support"
     }
-    
+
 }
