@@ -6,7 +6,7 @@
         "doctrine/orm": ">2.4.4"
     },
     "require-dev": {
-        "codeception/codeception": "~3.0"
+        "codeception/codeception": "3.0.x-dev"
     }
 
 }
