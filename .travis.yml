@@ -12,7 +12,7 @@ php:
 
 before_script:
   - composer self-update
-  - composer update -n --prefer-lowest
+  - composer update -n
   - "mysql -e 'create database zf2_test;'"
   - ./vendor/bin/doctrine-module orm:schema-tool:create
   - ./vendor/bin/codecept build
