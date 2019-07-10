@@ -1,9 +1,6 @@
 <?php 
 $I = new DoctrineTester($scenario);
 $I->wantTo('check that the user was persisted');
-if (!method_exists('Zend\ServiceManager\ServiceLocatorInterface', 'addPeeringServiceManager')) {
-    $scenario->skip('This test is incompatible with ZF3');
-}
 
 $I->dontSeeInRepository('\Application\Entity\User', ['name' => 'John Doe']);
 

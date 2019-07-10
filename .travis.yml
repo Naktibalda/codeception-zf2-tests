@@ -1,13 +1,18 @@
 language: php
 
+services:
+  - mysql
+
 php:
   - 5.6
   - 7.0
   - 7.1
+  - 7.2
+  - 7.3
 
 before_script:
   - composer self-update
-  - composer update -n --prefer-lowest
+  - composer update -n
   - "mysql -e 'create database zf2_test;'"
   - ./vendor/bin/doctrine-module orm:schema-tool:create
   - ./vendor/bin/codecept build
