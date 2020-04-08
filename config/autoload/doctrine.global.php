@@ -5,9 +5,9 @@ return array(
             'orm_default' => array(
                 'driverClass' =>'Doctrine\DBAL\Driver\PDOMySql\Driver',
                 'params' => array(
-                    'host'     => 'localhost',
+                    'host'     => '127.0.0.1',
                     'port'     => '',
                     'user'     => 'root',
-                    'password' => '',
+                    'password' => 'root',
                     'dbname'   => 'zf2_test',
                 )))));
